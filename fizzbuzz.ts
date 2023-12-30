@@ -1,6 +1,5 @@
 const empty = [...Array(100)];
-const fizzbuzz = empty.map(
-    (element: undefined, index: number): string | number => {
+const fizzbuzz = empty.map((element: undefined, index: number): string | number => {
         if ((index + 1) % 3 === 0 && (index + 1) % 5 === 0) {
             return "FizzBuzz";
         }
