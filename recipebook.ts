@@ -24,3 +24,20 @@ function makeFood() {
 
 const ingredientList = ["eggs", "milk", "butter", "sugar"];
 recipeBook("pancakes", ingredientList);
+
+// V2 Consumes a function AND returns a function
+let FurnitureKit = { name: "", toolkit: [""] };
+//
+function buildFurniture(furniture: string, tools: string[], furnitureDirections: () => void) {
+  FurnitureKit.name = furniture;
+  FurnitureKit.toolkit = tools;
+  console.log(`You are going to make a ${furniture}.`);
+  furnitureDirections();
+  console.log(`You made a ${furniture}!`);
+}
+//
+function getDirections() {
+  console.log(`Use the ${FurnitureKit.toolkit} to make a ${FurnitureKit.name}.`);
+}
+//
+buildFurniture("chair", ["wood", "hammer", "nails"], getDirections);
