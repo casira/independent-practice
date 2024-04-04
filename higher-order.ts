@@ -25,19 +25,29 @@ function makeFood() {
 const ingredientList = ["eggs", "milk", "butter", "sugar"];
 recipeBook("pancakes", ingredientList);
 
-// V2 Consumes a function AND returns a function
-let FurnitureKit = { name: "", toolkit: [""] };
 //
-function buildFurniture(furniture: string, tools: string[], furnitureDirections: () => void) {
-  FurnitureKit.name = furniture;
-  FurnitureKit.toolkit = tools;
+function buildFurniture(furniture: string, tools: string[], furnitureDirections: (f: string, t: string[]) => void) {
   console.log(`You are going to make a ${furniture}.`);
-  furnitureDirections();
+  furnitureDirections(furniture, tools);
   console.log(`You made a ${furniture}!`);
 }
 //
-function getDirections() {
-  console.log(`Use the ${FurnitureKit.toolkit} to make a ${FurnitureKit.name}.`);
+function getDirections(furniture: string, tools: string[]) {
+  console.log(`Use the ${tools} to make a ${furniture}.`);
 }
 //
 buildFurniture("chair", ["wood", "hammer", "nails"], getDirections);
+
+// Multiplier
+function multiplier(amount: number) {
+  return function (value: number) {
+    return amount * value;
+  };
+}
+
+const doubler = multiplier(2);
+console.log(doubler(5));
+console.log(doubler(3));
+
+const tripler = multiplier(3);
+console.log(tripler(2));
